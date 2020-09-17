@@ -1,7 +1,3 @@
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
 class DoubleConv(nn.Module):
     def __init__(self, in_c, out_c, int_c=None):
         super().__init__()
@@ -88,8 +84,6 @@ class UNet(nn.Module):
         self.up2 = Up(128, 128, 64,  att_c=64)
         self.up1 = Up(64,  64,  64,  att_c=32)
         self.out_conv = nn.Conv2d(64, out_c, 3, 1, 1)
-
-        self.out_conv.bias.data.fill_(0.5)
 
 
     def forward(self, *args):
