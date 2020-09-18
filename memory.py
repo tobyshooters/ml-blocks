@@ -1,5 +1,10 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
 class Memory(nn.Module):
     """
+    Reference: github.com/seoungwugoh/STM
     m_in, m_out: memory keys and values
     q_in, q_out: query keys and values
     """

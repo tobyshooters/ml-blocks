@@ -1,3 +1,9 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+# Reference: github.com/chenxi116/DeepLabv3.pytorch/blob/master/deeplab.py
+
 class ImagePool(nn.Module):
     def __init__(self, inc, intc):
         super(ImagePool, self).__init__()

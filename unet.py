@@ -1,3 +1,9 @@
+import torch
+import torch.nn as nn
+
+# UNet reference: github.com/milesial/Pytorch-UNet
+# Attention reference: https://github.com/LeeJunHyun/Image_Segmentation
+
 class DoubleConv(nn.Module):
     def __init__(self, in_c, out_c, int_c=None):
         super().__init__()
