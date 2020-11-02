@@ -27,7 +27,7 @@ def find_lr(model, dataloader, optimizer, low_lr=1e-8, high_lr=10, num_steps=200
         optimizer.zero_grad()
 
         wandb.log({
-            "find_lr_loss":          round_loss,
+            "find_lr_loss":          loss,
             "find_lr_learning_rate": curr_lr
         })
 

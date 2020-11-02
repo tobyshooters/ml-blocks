@@ -16,6 +16,7 @@ class Memory(nn.Module):
         T, D_e, Hm, Wm = m_in.size()
         _, D_o, _, _ = m_out.size()
 
+        m_in = m_in.transpose(0, 1)
         mi = m_in.reshape(D_e, T * Hm * Wm)
         mi = torch.transpose(mi, 0, 1)       # Keys: (T * Hm * Wm, De)
         qi = q_in.reshape(Bq, D_e, Hq * Wq)  # Queries: (Bq, De, Hq * Wq)
@@ -24,6 +25,7 @@ class Memory(nn.Module):
         p = p / math.sqrt(D_e)
         p = F.softmax(p, dim=1)
 
+        m_out = m_out.transpose(0, 1)
         mo = m_out.reshape(D_o, T * Hm * Wm) # Values: (T * Hm * Wm, Do)
         mem = torch.matmul(mo, p)            # Weighted sum of values: (Bq, Do, Hq * Wq) = (N, Do) X (Bq, N, Hq * Wq)
         mem = mem.reshape(Bq, D_o, Hq, Wq)

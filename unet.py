@@ -70,8 +70,8 @@ class Up(nn.Module):
     def forward(self, x_up, x_skip):
         x_up = self.up(x_up)
         if self.att:
-            x_att, _ = self.att(x_up, x_skip)
-        x = torch.cat([x_up, x_att], dim=1)
+            x_skip, _ = self.att(x_up, x_skip)
+        x = torch.cat([x_up, x_skip], dim=1)
         return self.conv(x)
 
 
