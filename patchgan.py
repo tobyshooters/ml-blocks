@@ -2,7 +2,10 @@ import torch
 import torch.nn as nn
 
 class Discriminator(nn.Module):
-    """Defines a PatchGAN discriminator"""
+    """
+    Defines a PatchGAN discriminator
+    Ref: github.com/junyanz/pytorch-CycleGAN-and-pix2pix
+    """
 
     def __init__(self, input_nc, ndf=64, n_layers=3):
         """
