@@ -1,0 +1,5 @@
+numpy
+torch>=1.8.1
+torchaudio>=0.8
+diffq>=0.1
+julius>=0.2.3
