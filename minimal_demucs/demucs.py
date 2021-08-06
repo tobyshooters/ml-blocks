@@ -10,7 +10,7 @@ from diffq import DiffQuantizer
 import torch.hub
 import io
 import zlib
-from pathlib import Path
+import os
 
 
 ###############################################################################
@@ -208,7 +208,7 @@ def load_model(name):
     model_hash = {"demucs": "e07c671f", "demucs_quantized": "07afea75"}
     cp = name + "-" + model_hash[name] + ".th"
 
-    if cp.exists():
+    if os.path.exists(cp):
         state = torch.load(cp)
     else:
         root = "https://dl.fbaipublicfiles.com/demucs/v3.0/"
